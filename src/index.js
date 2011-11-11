@@ -1,5 +1,4 @@
-var minimatch = require('minimatch'),
-fs = require('fs');
+var fs = require('fs');
 
 
 function match(paths, cwd, files, statd)
@@ -62,6 +61,7 @@ module.exports = function(includes, callback)
 	search.forEach(function(path)
 	{
 		path = path.replace(/~/g, process.env.HOME);
+		// path = path.replace(/^**/, process.cwd());
 		
 		if(path.substr(0,1) != '/') path += process.cwd() + '/' + path; 
 		
