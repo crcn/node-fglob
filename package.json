@@ -1,0 +1,17 @@
+{
+  "author": "Craig Condon",
+  "name": "fglob",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spiceapps/node-fglob.git"
+  },
+  "engines": {
+    "node": "~0.6.0"
+  },
+  "dependencies": {
+    "minimatch":"*"
+  },
+  "devDependencies": {},
+  "main":"./src/index.js"
+}
