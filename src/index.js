@@ -52,8 +52,16 @@ function match(paths, cwd, files, statd)
 	return files;
 }
  
-module.exports = function(includes, callback)
+module.exports = function(includes, ops, callback)
 {
+	if(!callback)
+	{
+		callback = ops;
+		ops = {
+			cwd: process.cwd()
+		}
+	}
+	
 	var search = includes.split(/[\s,]+/g),
 	numSearching = search.length,
 	allFiles = {};
@@ -61,13 +69,13 @@ module.exports = function(includes, callback)
 	search.forEach(function(path)
 	{
 		path = path.replace(/~/g, process.env.HOME);
-		// path = path.replace(/^**/, process.cwd());
 		
-		if(path.substr(0,1) != '/') path += process.cwd() + '/' + path; 
+		if(path.substr(0,1) != '/') path += ops.cwd + '/' + path; 
 		
 		var paths = path.split('/');
 		
 		paths.shift();
+		
 		
 		match(paths, '/', allFiles);
 	});
