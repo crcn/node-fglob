@@ -70,7 +70,7 @@ module.exports = function(includes, ops, callback)
 	{
 		path = path.replace(/~/g, process.env.HOME);
 		
-		if(path.substr(0,1) != '/') path += ops.cwd + '/' + path; 
+		if(path.substr(0,1) != '/') path = ops.cwd + '/' + path; 
 		
 		var paths = path.split('/');
 		
