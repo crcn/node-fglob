@@ -13,7 +13,8 @@ function match(paths, cwd, files, statd)
 			if(!statd) fs.statSync(cwd);
 			
 			files[cwd.substr(1)] = 1;
-		}catch(e)
+		}
+		catch(e)
 		{
 			
 		}
@@ -27,10 +28,17 @@ function match(paths, cwd, files, statd)
 	if(path.indexOf('*') > -1)
 	{
 		var regex = new RegExp('^'+path.replace(/\./g,'\\.').replace(/\*/g,'.*?') + '$');
-		
-		
-		var stat = fs.statSync(cwd);
-		                    
+
+		try 
+		{
+
+			var stat = fs.statSync(cwd);
+		}
+		catch(e)
+		{
+			return;
+		}
+
 		if(stat.isDirectory())
 		{
 			fs.readdirSync(cwd).forEach(function(file)
@@ -49,7 +57,7 @@ function match(paths, cwd, files, statd)
 		return match(paths.concat(), cwd, files);
 	}
 	
-	return files;
+	return;
 }
  
 module.exports = function(includes, ops, callback)
