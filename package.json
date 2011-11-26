@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/spiceapps/node-fglob.git"
+    "url": "git://github.com/crcn/node-fglob.git"
   },
   "dependencies": {
   },
