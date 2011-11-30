@@ -23,10 +23,11 @@ function match(paths, cwd, files, statd)
 	
 	
 	var path = paths.shift();
-	
+
 	
 	if(path.indexOf('*') > -1)
 	{
+
 		var regex = new RegExp('^'+path.replace(/\./g,'\\.').replace(/\*/g,'.*?') + '$');
 
 		try 
